@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .bg-blue {
+    @apply bg-[#00628B];
+  }
+  .bg-blueWhite {
+    @apply bg-[#3384a7];
+  }
+  .text-blue {
+    @apply text-[#00628B];
+  }
+
+  .text-blueWhite {
+    @apply text-[#3384a7];
+  }
+  .bg-white {
+    @apply bg-[#00628B];
+  }
+  .blues {
+    @apply text-[#00628B];
+  }
+}
