@@ -16,6 +16,8 @@ import {
   ForgetPasswordPage,
   HomePage,
   LoginPage,
+  ManageOfficePage,
+  ManageStudentPage,
   NotFoundPage,
   OfficeProfilePage,
   OfficesDashboard,
@@ -111,7 +113,10 @@ function App() {
           >
             <Route index element={<Navigate replace to={"dashboard"} />} />
             <Route path="dashboard" element={<SupperAdmin />} />
-            <Route path="profile/:id" element={<AdminProfilePage />} />
+            <Route path="profile" element={<AdminProfilePage />} />
+            <Route path="office" element={<ManageOfficePage />} />
+            <Route path="student" element={<ManageStudentPage />} />
+            <Route path="communicate" element={<CommunicatingPage />} />
           </Route>
 
           {/** */}

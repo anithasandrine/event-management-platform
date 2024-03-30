@@ -19,6 +19,15 @@ type StudentAtribute = {
   storePhone: string | null;
 };
 
+type OfficeAttributes = {
+  id: string;
+  officeEmail: string;
+  officeName: string;
+  officePhone: string;
+  profilePicture: string;
+  userName: string;
+};
+
 type StudentSignupATributes = {
   regNo: string;
   updatedEmail: string;
@@ -100,4 +109,20 @@ type UpdateStudentAttributes = {
   name: string;
   updatedEmail: string;
   updatedPhone: string;
+};
+
+type CreateOfficeAttributes = {
+  userName: string;
+  officeName: string;
+  officeEmail: string;
+  officePhone: string;
+  password: string;
+  confirmPassword: string;
+};
+
+type EditOfficeAttributes = {
+  userName: string;
+  officeName: string;
+  officeEmail: string;
+  officePhone: string;
 };
