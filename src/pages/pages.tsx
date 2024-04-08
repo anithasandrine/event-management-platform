@@ -23,6 +23,9 @@ import OfficeProfile from "../containers/admin/offices/profile";
 import { UpdateStudentProfile } from "../containers/pages/student/updatePrifile";
 import { ConfirmProfileUpdale } from "../containers/pages/student/confirmUpdate";
 import { ChangePassword } from "../containers/pages/student/changePassword";
+import { ManageOffice } from "../containers/admin/supperAdmin/manageOffice";
+import { ManageStudent } from "../containers/admin/supperAdmin/manageStudent";
+import { ManageCommunication } from "../containers/admin/supperAdmin/communication";
 
 export const HomePage = () => <LandingPage />;
 export const SignUP = () => <Signup />;
@@ -49,6 +52,9 @@ export const CareerProfilePage = () => <CareerProfile />;
 
 export const SupperAdmin = () => <AdminDashboard />;
 export const AdminProfilePage = () => <AdminProfile />;
+export const ManageOfficePage = () => <ManageOffice />;
+export const ManageStudentPage = () => <ManageStudent />;
+export const Communications = () => <ManageCommunication />;
 
 export const UnOuthorizedPage = () => <UnOuthorized />;
 export const NotFoundPage = () => <NotFound />;
