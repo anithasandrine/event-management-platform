@@ -25,6 +25,7 @@ import { ConfirmProfileUpdale } from "../containers/pages/student/confirmUpdate"
 import { ChangePassword } from "../containers/pages/student/changePassword";
 import { ManageOffice } from "../containers/admin/supperAdmin/manageOffice";
 import { ManageStudent } from "../containers/admin/supperAdmin/manageStudent";
+import { ManageCommunication } from "../containers/admin/supperAdmin/communication";
 
 export const HomePage = () => <LandingPage />;
 export const SignUP = () => <Signup />;
@@ -53,7 +54,7 @@ export const SupperAdmin = () => <AdminDashboard />;
 export const AdminProfilePage = () => <AdminProfile />;
 export const ManageOfficePage = () => <ManageOffice />;
 export const ManageStudentPage = () => <ManageStudent />;
-export const Communications = () => <Communications />;
+export const Communications = () => <ManageCommunication />;
 
 export const UnOuthorizedPage = () => <UnOuthorized />;
 export const NotFoundPage = () => <NotFound />;

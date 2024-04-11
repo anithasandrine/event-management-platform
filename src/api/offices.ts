@@ -85,3 +85,53 @@ export const updateOffice = async (
   }
   return await data.json();
 };
+
+export const sendCommunication = async (values: CommunicationMessage) => {
+  const loggedin = getLoggedInuser();
+  const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
+  const data = await fetch(`${API_URL}/office/comunicate`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Token}`,
+    },
+    body: JSON.stringify(values),
+  });
+  if (!data.ok) {
+    throw await data.json();
+  }
+  return await data.json();
+};
+
+export const findAllSchools = async () => {
+  const loggedin = getLoggedInuser();
+  const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
+  const data = await fetch(`${API_URL}/office/school`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Token}`,
+    },
+  });
+  if (!data.ok) {
+    throw await data.json();
+  }
+  return (await data.json()).message;
+};
+
+export const findStudentByRegNo = async (regNo: string) => {
+  const loggedin = getLoggedInuser();
+  const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
+  const data = await fetch(`${API_URL}/student/reg/s`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Token}`,
+    },
+    body: JSON.stringify({ regNo }),
+  });
+  if (!data.ok) {
+    throw await data.json();
+  }
+  return (await data.json()).message;
+};

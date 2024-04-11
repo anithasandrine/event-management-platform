@@ -4,7 +4,10 @@ import {
   deleteOffice,
   findAllOfficById,
   findAllOffices,
+  findAllSchools,
+  findStudentByRegNo,
   createOffice as office,
+  sendCommunication,
   updateOffice,
 } from "../../../api/offices";
 
@@ -69,4 +72,35 @@ export const UpdateOffice = (id: string) => {
     onError: (error: ErrorAtributes) => toast.error(error.originalError),
   });
   return { isPending, Update };
+};
+
+export const SendCommunication = () => {
+  const { isPending, mutate: Comunicate } = useMutation({
+    mutationFn: (values: CommunicationMessage) => sendCommunication(values),
+    onSuccess: (data: Responce) => {
+      toast.success(data.message ?? "Something went wrong,Try again.");
+    },
+    onError: (error: ErrorAtributes) => toast.error(error.originalError),
+  });
+  return { isPending, Comunicate };
+};
+
+export const FindSchools = () => {
+  const {
+    error,
+    isPending,
+    data: schools,
+  } = useQuery({
+    queryKey: ["Schools"],
+    queryFn: async () => await findAllSchools(),
+  });
+  return { error, isPending, schools };
+};
+
+export const StudentByRegNo = () => {
+  const { isPending: pendingStudent, mutate } = useMutation({
+    mutationFn: (regNO: string) => findStudentByRegNo(regNO),
+    onError: (error: ErrorAtributes) => toast.error(error.originalError),
+  });
+  return { pendingStudent, mutate };
 };

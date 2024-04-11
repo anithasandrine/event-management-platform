@@ -11,6 +11,7 @@ import {
   CarrerGuidanceDashboard,
   ChangePasswordPage,
   CommunicatingPage,
+  Communications,
   ConfirmUpdatePage,
   ErrorPage,
   ForgetPasswordPage,
@@ -116,7 +117,7 @@ function App() {
             <Route path="profile" element={<AdminProfilePage />} />
             <Route path="office" element={<ManageOfficePage />} />
             <Route path="student" element={<ManageStudentPage />} />
-            <Route path="communicate" element={<CommunicatingPage />} />
+            <Route path="communicate" element={<Communications />} />
           </Route>
 
           {/** */}

@@ -126,3 +126,24 @@ type EditOfficeAttributes = {
   officeEmail: string;
   officePhone: string;
 };
+type Receiver = {
+  school: string;
+  dpt: string[];
+};
+type CommunicationMessage = {
+  receiver: Receiver[] | string[];
+  channel: "sms" | "email";
+  subject: string;
+  content: string;
+};
+
+type Departement = {
+  id: string;
+  name: string;
+};
+type School = {
+  id: string;
+  name: string;
+  fullName: string;
+  Departments: Departement[];
+};

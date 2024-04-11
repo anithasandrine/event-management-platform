@@ -78,18 +78,18 @@ export const ManageOffice = () => {
                 Back
               </button>
             </div>
-            <div className="mt-4">
+            <div className="mt-4 flex flex-wrap w-full">
               <input
                 type="text"
-                placeholder="Search office"
+                placeholder="Type office name...."
                 onChange={Handle_TableSearch}
-                className=" md:min-w-[40%]  px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-4 placeholder:text-blue  "
+                className=" md:min-w-[40%]  px-2 py-1 my-1 border-[#00628B]  border-[1px] outline-none placeholder:text-blue  "
               />
               <button
                 onClick={() =>
                   Fielter_searchedData(search ?? "", offices.message)
                 }
-                className=" bg-blue hover:bg-blueWhite px-6 py-1  mt-4 md:mt-0 text-white "
+                className=" bg-blue hover:bg-blueWhite px-6 py-1 my-1  h-full  text-white"
               >
                 Search
               </button>
