@@ -146,7 +146,7 @@ export function CommunicationMessage() {
 
           {reciverSelectinMethod === "student" && (
             <div className=" w-full">
-              <StudentById setValue={setValue} navigate={navigate} />
+              <StudentById setValue={setValue} />
             </div>
           )}
         </div>

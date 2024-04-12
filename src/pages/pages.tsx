@@ -15,17 +15,16 @@ import { ForgetPassword } from "../containers/Auth/frogetPassword";
 import { ResetPassword } from "../containers/Auth/resetPassword";
 import { UnOuthorized } from "../containers/unouthrozed";
 import { StudentProfile } from "../containers/pages/student/studentProfile";
-import { UpdateGuidancePassword } from "../containers/admin/CareerGuidance/updatePassword";
-import { UpdateGuidance } from "../containers/admin/CareerGuidance/updateGuidance";
 import AdminProfile from "../containers/admin/supperAdmin/profile";
-import CareerProfile from "../containers/admin/CareerGuidance/profile";
-import OfficeProfile from "../containers/admin/offices/profile";
+import { OfficeProfile } from "../containers/admin/OfficeProfile";
 import { UpdateStudentProfile } from "../containers/pages/student/updatePrifile";
 import { ConfirmProfileUpdale } from "../containers/pages/student/confirmUpdate";
 import { ChangePassword } from "../containers/pages/student/changePassword";
 import { ManageOffice } from "../containers/admin/supperAdmin/manageOffice";
 import { ManageStudent } from "../containers/admin/supperAdmin/manageStudent";
 import { ManageCommunication } from "../containers/admin/supperAdmin/communication";
+import { UpdateOfficePassword } from "../containers/admin/UpdateOfficePassword";
+import { UpdateOfficeProfile } from "../containers/admin/updateOffice";
 
 export const HomePage = () => <LandingPage />;
 export const SignUP = () => <Signup />;
@@ -43,12 +42,13 @@ export const ConfirmUpdatePage = () => <ConfirmProfileUpdale />;
 export const ChangePasswordPage = () => <ChangePassword />;
 
 export const OfficesDashboard = () => <OfficeDashboard />;
-export const OfficeProfilePage = () => <OfficeProfile />;
-export const UpdateOfficePasswordPage = () => <UpdateGuidancePassword />;
-export const UpdateOfficePage = () => <UpdateGuidance />;
+export const UpdateOfficePasswordPage = () => <UpdateOfficePassword />;
+export const UpdateOfficePage = () => <UpdateOfficeProfile />;
 
 export const CarrerGuidanceDashboard = () => <CareerDashboard />;
-export const CareerProfilePage = () => <CareerProfile />;
+
+// general
+export const OfficeProfilePage = () => <OfficeProfile />;
 
 export const SupperAdmin = () => <AdminDashboard />;
 export const AdminProfilePage = () => <AdminProfile />;
