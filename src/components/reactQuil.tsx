@@ -5,12 +5,15 @@ import { QuilFormats, QuilModules } from "./form/office/QuilToolBar";
 
 export const Quil = ({
   HandleChange,
+  defaulValue,
 }: {
   HandleChange: (content: string) => void;
+  defaulValue?: string;
 }) => {
   return (
-    <>
+    <div className="mb-4">
       <ReactQuill
+        defaultValue={defaulValue ?? ""}
         theme="snow"
         modules={QuilModules}
         formats={QuilFormats}
@@ -18,9 +21,11 @@ export const Quil = ({
       />
       <style>{`
         .ql-editor {
-          min-height: 15rem
+          min-height: 15rem;
+          border: 1px solid #00628B;
         }
+        
       `}</style>
-    </>
+    </div>
   );
 };
