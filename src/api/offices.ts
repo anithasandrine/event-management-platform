@@ -135,3 +135,65 @@ export const findStudentByRegNo = async (regNo: string) => {
   }
   return (await data.json()).message;
 };
+
+export const OfficeUpdatePicture = async (picUlr: FileList) => {
+  const loggedin = getLoggedInuser();
+  const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
+
+  const formData = new FormData();
+  const filesArray = [];
+  filesArray.push(picUlr[0]);
+  for (let index = 0; index < filesArray.length; index++) {
+    const element = filesArray[index];
+    formData.append("profilePicture", element);
+  }
+  const data = await fetch(`${API_URL}/office/profile_pic`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${Token}`,
+    },
+    body: formData,
+  });
+  if (!data.ok) {
+    throw await data.json();
+  }
+  return await data.json();
+};
+
+export const updateOfficePasswordApi = async (
+  token: UpdatePasswordAttributes
+) => {
+  const loggedin = getLoggedInuser();
+  const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
+  const data = await fetch(`${API_URL}/auth/office/password`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Token}`,
+    },
+    body: JSON.stringify(token),
+  });
+  if (!data.ok) {
+    throw await data.json();
+  }
+  return await data.json();
+};
+
+export const officeUpdateInfo = async (updates: UpdateOfficeAttributes) => {
+  const loggedin = getLoggedInuser();
+  const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
+  const id = "id" in loggedin ? loggedin.id : "";
+
+  const data = await fetch(`${API_URL}/office/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${Token}`,
+    },
+    body: JSON.stringify(updates),
+  });
+  if (!data.ok) {
+    throw await data.json();
+  }
+  return await data.json();
+};

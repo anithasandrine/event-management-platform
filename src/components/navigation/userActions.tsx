@@ -77,9 +77,9 @@ export const UserActions = ({ Handle_click }: { Handle_click: () => void }) => {
               UserRole === OFFICE &&
                 Handle_navigating(`office/profile/${UserId}`);
               UserRole === CAREER &&
-                Handle_navigating(`/career/profile/${UserId}`);
+                Handle_navigating(`/office/profile/${UserId}`);
               UserRole === SUPPER_ADMIN &&
-                Handle_navigating(`/admin/profile/${UserId}`);
+                Handle_navigating(`/office/profile/${UserId}`);
             }}
             className="w-full flex items-center px-4 py-2 text-sm text-blue hover:bg-gray-100 hover:text-black"
           >
