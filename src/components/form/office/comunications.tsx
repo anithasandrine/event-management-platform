@@ -41,7 +41,6 @@ export function CommunicationMessage() {
   }
   function HandleChange(content: string) {
     setValue("content", content);
-    setValue("channel", "email");
   }
   function HandleSelection(
     select: {
@@ -118,7 +117,7 @@ export function CommunicationMessage() {
                 setValue("receiver", []);
               }}
               disabled={isPending}
-              className=" bg-orange-400 w-full
+              className=" bg-blue w-full
              hover:bg-blueWhite px-6 py-1 text-lg  text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               Filter student
@@ -146,7 +145,7 @@ export function CommunicationMessage() {
 
           {reciverSelectinMethod === "student" && (
             <div className=" w-full">
-              <StudentById setValue={setValue} navigate={navigate} />
+              <StudentById setValue={setValue} />
             </div>
           )}
         </div>
@@ -160,7 +159,7 @@ export function CommunicationMessage() {
           </button>
 
           <button
-            onClick={() => navigate("/admin/dashboard")}
+            onClick={() => navigate(-1)}
             disabled={isPending}
             className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4 md:mt-8 lg:mt-10   text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >

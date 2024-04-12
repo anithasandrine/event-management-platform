@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import {
   comfirmUpdateInfo,
@@ -7,6 +7,7 @@ import {
   studentUpdatePicture,
   updatePassword,
 } from "../../../api/student";
+import { createSession } from "../../../api/session";
 
 export const Profile = () => {
   const { isPending, mutate: updateProfile } = useMutation({
@@ -62,4 +63,17 @@ export const UpdatePassword = () => {
     },
   });
   return { isPending, updatepassword };
+};
+
+export const CreateSession = () => {
+  const queryClient = useQueryClient();
+  const { error, isPending, mutate } = useMutation({
+    mutationFn: (bookingReason: string) => createSession(bookingReason),
+    onSuccess: (data: Responce) => {
+      toast.success(data?.message ?? "Booking created successfuly!");
+      queryClient.invalidateQueries({ queryKey: ["Session"] });
+    },
+    onError: (error: ErrorAtributes) => toast.error(error.originalError),
+  });
+  return { error, isPending, mutate };
 };

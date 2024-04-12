@@ -17,6 +17,10 @@ type StudentAtribute = {
   emailToken: string | null;
   storeEmail: string | null;
   storePhone: string | null;
+  Department: {
+    id: string;
+    name: string;
+  };
 };
 
 type OfficeAttributes = {
@@ -110,6 +114,12 @@ type UpdateStudentAttributes = {
   updatedEmail: string;
   updatedPhone: string;
 };
+type UpdateOfficeAttributes = {
+  userName: string;
+  officePhone: string;
+  officeEmail: string;
+  officeName: string;
+};
 
 type CreateOfficeAttributes = {
   userName: string;
@@ -146,4 +156,29 @@ type School = {
   name: string;
   fullName: string;
   Departments: Departement[];
+};
+
+type CareerPostAtributes = {
+  title: string;
+  description: string;
+  category: string;
+  author: string;
+  image: string;
+};
+
+type PostAtributes = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  author: string;
+  image: string;
+  createdAt: Date;
+};
+
+type SessionAttribute = {
+  id: string;
+  Student: Partial<StudentAtribute>;
+  bookingReason: string;
+  replay?: string;
 };
