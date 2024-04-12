@@ -1,21 +1,22 @@
-import DataTable from "react-data-table-component";
+import DataTable, { TableColumn } from "react-data-table-component";
 import Tippy from "@tippyjs/react";
 import { useState } from "react";
 import { GeneralSkeleton } from "./Skleton/generalSkeleton";
 import { StudentByRegNo } from "../containers/admin/supperAdmin/Actions";
+import { UseFormSetValue } from "react-hook-form";
 
 export const StudentById = ({
   setValue,
 }: {
-  setValue: (key: string, value: string[]) => void;
+  setValue: UseFormSetValue<CommunicationMessage>;
 }) => {
   const [selectedStudent, setSeletecStudent] = useState<string[]>([]);
   setValue("receiver", selectedStudent);
 
-  const columns = [
+  const columns: TableColumn<StudentAtribute>[] = [
     {
       name: "Name",
-      selector: (row: { name: string }) => row.name,
+      selector: (row) => row.name,
     },
     {
       name: "regNo",
@@ -23,7 +24,7 @@ export const StudentById = ({
     },
     {
       name: "Department",
-      selector: (row: { Department: { name: string } }) => row.Department.name,
+      selector: (row) => row.Department.name,
     },
 
     {
@@ -54,7 +55,7 @@ export const StudentById = ({
   ];
 
   const [regNO, setRegNo] = useState<string>();
-  const [studetn, setStudent] = useState([]);
+  const [studetn, setStudent] = useState<StudentAtribute[]>([]);
   const { pendingStudent, mutate } = StudentByRegNo();
   if (pendingStudent) {
     <GeneralSkeleton />;
@@ -77,7 +78,7 @@ export const StudentById = ({
           type="button"
           onClick={() => {
             mutate(regNO ?? "", {
-              onSuccess: (data) => setStudent([data]),
+              onSuccess: (data: StudentAtribute) => setStudent([data]),
               onError: () => setStudent([]),
             });
             setRegNo("");

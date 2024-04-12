@@ -7,8 +7,11 @@ import {
   findAllSchools,
   findStudentByRegNo,
   createOffice as office,
+  officeUpdateInfo,
+  OfficeUpdatePicture,
   sendCommunication,
   updateOffice,
+  updateOfficePasswordApi,
 } from "../../../api/offices";
 
 export const CreateOffice = () => {
@@ -54,11 +57,15 @@ export const DeleteOffice = () => {
 };
 
 export const Office = (id: string) => {
-  const { error, data: office } = useQuery({
+  const {
+    isPending,
+    error,
+    data: office,
+  } = useQuery({
     queryKey: ["Office"],
     queryFn: async () => await findAllOfficById(id),
   });
-  return { error, office };
+  return { isPending, error, office };
 };
 
 export const UpdateOffice = (id: string) => {
@@ -103,4 +110,42 @@ export const StudentByRegNo = () => {
     onError: (error: ErrorAtributes) => toast.error(error.originalError),
   });
   return { pendingStudent, mutate };
+};
+
+export const OfficeProfile = () => {
+  const queryClient = useQueryClient();
+  const { isPending, mutate: updateProfile } = useMutation({
+    mutationFn: (Files: FileList) => OfficeUpdatePicture(Files),
+    onSuccess: (res: Responce) => {
+      toast.success(res.message);
+      queryClient.invalidateQueries({ queryKey: ["Office"] });
+    },
+    onError: (error: ErrorAtributes) => {
+      toast.error(error.originalError);
+    },
+  });
+  return { isPending, updateProfile };
+};
+
+export const UpdateOfficePasswordAction = () => {
+  const { isPending, mutate: updatepassword } = useMutation({
+    mutationFn: (data: UpdatePasswordAttributes) =>
+      updateOfficePasswordApi(data),
+    onSuccess: (res: Responce) => toast.success(res.message),
+    onError: (error: ErrorAtributes) => {
+      toast.error(error.originalError);
+    },
+  });
+  return { isPending, updatepassword };
+};
+
+export const UpdateofficeInfo = () => {
+  const { isPending, mutate: updateProfile } = useMutation({
+    mutationFn: (data: UpdateOfficeAttributes) => officeUpdateInfo(data),
+    onSuccess: (res: Responce) => toast.success(res.message),
+    onError: (error: ErrorAtributes) => {
+      toast.error(error.originalError);
+    },
+  });
+  return { isPending, updateProfile };
 };

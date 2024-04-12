@@ -17,6 +17,10 @@ type StudentAtribute = {
   emailToken: string | null;
   storeEmail: string | null;
   storePhone: string | null;
+  Department: {
+    id: string;
+    name: string;
+  };
 };
 
 type OfficeAttributes = {
@@ -109,6 +113,12 @@ type UpdateStudentAttributes = {
   name: string;
   updatedEmail: string;
   updatedPhone: string;
+};
+type UpdateOfficeAttributes = {
+  userName: string;
+  officePhone: string;
+  officeEmail: string;
+  officeName: string;
 };
 
 type CreateOfficeAttributes = {
