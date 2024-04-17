@@ -4,25 +4,21 @@ import { FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ButtonLoader } from "../../buttonLoader";
 import { Quil } from "../../reactQuil";
-import {
-  FindPost,
-  UpdatePost,
-} from "../../../containers/admin/CareerGuidance/Actions";
-import { GeneralSkeleton } from "../../Skleton/generalSkeleton";
+import { UpdatePost } from "../../../containers/admin/CareerGuidance/Actions";
 
 export function EditPost({
   Handle_EditModel,
-  postId,
+  post,
 }: {
   Handle_EditModel: () => void;
-  postId: string;
+  post: PostAtributes;
 }) {
   const { register, handleSubmit, setValue, reset, formState } =
     useForm<CareerPostAtributes>();
   const { errors } = formState;
   const navigate = useNavigate();
-  const { Fetching, Post } = FindPost(postId);
-  const { isPending, error, mutate } = UpdatePost(postId);
+  // const { Fetching, Post } = FindPost(post.id);
+  const { isPending, error, mutate } = UpdatePost(post.id);
   const subForm: SubmitHandler<CareerPostAtributes> = (data) => {
     mutate(data, {
       onSuccess: () => {
@@ -31,7 +27,7 @@ export function EditPost({
       },
     });
   };
-  function Handle_updatePassword(e: FormEvent<HTMLElement>) {
+  function Handle_updatePost(e: FormEvent<HTMLElement>) {
     e.preventDefault();
     handleSubmit(subForm)(e);
   }
@@ -43,16 +39,12 @@ export function EditPost({
   if (error) {
     navigate("/error");
   }
-  if (Fetching) {
-    return GeneralSkeleton;
-  }
 
-  if (Post && Post.message) {
-    const post: CareerPostAtributes = Post?.message;
-    return (
-      <>
+  return (
+    <>
+      {
         <form
-          onSubmit={Handle_updatePassword}
+          onSubmit={Handle_updatePost}
           className="mt-4 xl:mt-12 px-2 w-full md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center "
         >
           <input
@@ -128,7 +120,7 @@ export function EditPost({
             </button>
           </div>
         </form>
-      </>
-    );
-  }
+      }
+    </>
+  );
 }

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FormError } from "./FormError";
-import { FormEvent } from "react";
+import { FormEvent, useEffect } from "react";
 import { ReplaySession } from "../containers/admin/CareerGuidance/Actions";
 
 export const ReplayModle = ({
@@ -12,13 +12,14 @@ export const ReplayModle = ({
   item: { id: string; email: string };
   sessions: SessionAttribute[];
 }) => {
+  useEffect(() => {}, [item.id]);
   const { register, handleSubmit, setValue, reset, formState } = useForm<{
     subject: string;
     email: string;
     replay: string;
   }>();
   const { errors } = formState;
-  const { isPending, error, replay } = ReplaySession(item.id);
+  const { isPending, replay } = ReplaySession(item.id);
   const content = sessions.filter(
     (session: SessionAttribute) => session.id === item.id
   )[0].bookingReason;
@@ -37,6 +38,7 @@ export const ReplayModle = ({
     e.preventDefault();
     handleSubmit(onsubmit)(e);
   }
+
   return (
     <div className="fixed top-10 left-auto right-auto h-full">
       <form

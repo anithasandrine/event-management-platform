@@ -5,7 +5,7 @@ export const EditModel = ({
   item,
 }: {
   Handle_Editmodle: () => void;
-  item: { id: string; name: string };
+  item: { id: string; name: string; office: OfficeAttributes };
 }) => {
   return (
     <div className=" w-full h-full absolute top-0 bg-red-60">

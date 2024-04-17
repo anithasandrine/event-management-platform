@@ -11,7 +11,7 @@ export const OfficeTable = ({
 }: {
   Handle_modle: () => void;
   Handle_EditModel: () => void;
-  Handle_id: (id: string, name: string) => void;
+  Handle_id: (id: string, name: string, office: OfficeAttributes) => void;
   offices: OfficeAttributes[];
 }) => {
   // const conditionalRow = [
@@ -44,7 +44,7 @@ export const OfficeTable = ({
           <button
             onClick={() => {
               Handle_EditModel();
-              Handle_id(row.id, row.officeName);
+              Handle_id(row.id, row.officeName, row);
             }}
           >
             <Tippy content="Edit">
@@ -57,7 +57,7 @@ export const OfficeTable = ({
           <button
             onClick={() => {
               Handle_modle();
-              Handle_id(row.id, row.officeName);
+              Handle_id(row.id, row.officeName, row);
             }}
           >
             <Tippy content="Delete">

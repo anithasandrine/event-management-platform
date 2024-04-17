@@ -130,7 +130,7 @@ export function CommunicationMessage() {
                 setValue("receiver", []);
               }}
               disabled={isPending}
-              className=" bg-orange-400 w-full
+              className=" bg-blue w-full
              hover:bg-blueWhite px-6 py-1 text-lg  text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               Filter Department

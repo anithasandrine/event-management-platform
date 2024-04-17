@@ -17,7 +17,11 @@ export const CareerPostsDashboard = () => {
   const [oppenEdit, setOpenEdit] = useState<boolean>(false);
   const [search, setSearch] = useState<string>();
   const [TableData, setTableData] = useState<CareerPostAtributes[]>();
-  const [item, setItem] = useState<{ id: string; name: string } | null>(null);
+  const [item, setItem] = useState<{
+    id: string;
+    name: string;
+    post: PostAtributes;
+  } | null>(null);
   const [selectedChategory, setSelectedCategory] = useState<string>();
   const { isPending, error, Posts } = FindAllPosts();
 
@@ -38,8 +42,8 @@ export const CareerPostsDashboard = () => {
     setIsmodelOpen(false);
   }
 
-  function Handle_id(id: string, name: string) {
-    setItem({ id, name });
+  function Handle_id(id: string, name: string, post: PostAtributes) {
+    setItem({ id, name, post });
   }
 
   function Handle_TableSearch(e: {
@@ -71,9 +75,12 @@ export const CareerPostsDashboard = () => {
   if (error) {
     return navigate("/error");
   }
+  let foundTypes: string[] = [];
   if (Posts) {
-    const foundTypes = filterTypes(Posts?.message);
-    return (
+    foundTypes = filterTypes(Posts?.message);
+  }
+  return (
+    Posts && (
       <PageLayout>
         <ContentLayout>
           <div className=" w-full h-full min-h-fit relative">
@@ -160,15 +167,12 @@ export const CareerPostsDashboard = () => {
                 item={item ?? { id: "", name: "" }}
               />
             )}
-            {oppenEdit && (
-              <EditPost
-                Handle_EditModel={Handle_EditModel}
-                postId={item?.id ?? ""}
-              />
+            {oppenEdit && item?.post !== undefined && (
+              <EditPost Handle_EditModel={Handle_EditModel} post={item?.post} />
             )}
           </div>
         </ContentLayout>
       </PageLayout>
-    );
-  }
+    )
+  );
 };

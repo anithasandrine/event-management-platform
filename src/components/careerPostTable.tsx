@@ -13,7 +13,7 @@ export const PostsTable = ({
 }: {
   Handle_modle: () => void;
   Handle_EditModel: () => void;
-  Handle_id: (id: string, name: string) => void;
+  Handle_id: (id: string, name: string, post: PostAtributes) => void;
   posts: PostAtributes[];
 }) => {
   const columns = [
@@ -48,7 +48,7 @@ export const PostsTable = ({
           <button
             onClick={() => {
               Handle_EditModel();
-              Handle_id(row.id, row.title);
+              Handle_id(row.id, row.title, row);
             }}
           >
             <Tippy content="Edit">
@@ -61,7 +61,7 @@ export const PostsTable = ({
           <button
             onClick={() => {
               Handle_modle();
-              Handle_id(row.id, row.title);
+              Handle_id(row.id, row.title, row);
             }}
           >
             <Tippy content="Delete">

@@ -8,6 +8,7 @@ import {
 } from "../../../api/career";
 import toast from "react-hot-toast";
 import { getAllSessions, repalySession } from "../../../api/session";
+import { updateStudentCredentials } from "../../../api/supperAdmin";
 
 export const CreatePost = () => {
   const queryClient = useQueryClient();
@@ -40,7 +41,7 @@ export const FindPost = (id: string) => {
     error,
     data: Post,
   } = useQuery({
-    queryKey: ["Post"],
+    queryKey: [""],
     queryFn: async () => await findPost(id),
   });
   return { Fetching, error, Post };
@@ -68,6 +69,7 @@ export const UpdatePost = (id: string) => {
     onSuccess: () => {
       toast.success("Post updated successfully!");
       queryClient.invalidateQueries({ queryKey: ["Posts"] });
+      queryClient.resetQueries({ queryKey: ["Post"] });
     },
     onError: (error: ErrorAtributes) => toast.error(error.originalError),
   });
@@ -101,4 +103,22 @@ export const ReplaySession = (id: string) => {
     },
   });
   return { isPending, error, replay };
+};
+
+export const UpdateStudentCredentials = (id: string) => {
+  const queryClient = useQueryClient();
+  const {
+    isPending,
+    error,
+    mutate: updateStudent,
+  } = useMutation({
+    mutationFn: (student: UpdateStudentAttributes) =>
+      updateStudentCredentials(id, student),
+    onSuccess: () => {
+      toast.success("Student updated successfully!");
+      queryClient.invalidateQueries({ queryKey: ["Sessoins"] });
+    },
+    onError: (error: ErrorAtributes) => toast.error(error.originalError),
+  });
+  return { isPending, error, updateStudent };
 };
