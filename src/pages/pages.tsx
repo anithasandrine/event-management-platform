@@ -25,6 +25,8 @@ import { ManageStudent } from "../containers/admin/supperAdmin/manageStudent";
 import { ManageCommunication } from "../containers/admin/supperAdmin/communication";
 import { UpdateOfficePassword } from "../containers/admin/UpdateOfficePassword";
 import { UpdateOfficeProfile } from "../containers/admin/updateOffice";
+import { CareerPostsDashboard } from "../containers/admin/CareerGuidance/posts";
+import { OneToOneCarrerSessions } from "../containers/admin/CareerGuidance/sesions";
 
 export const HomePage = () => <LandingPage />;
 export const SignUP = () => <Signup />;
@@ -46,6 +48,8 @@ export const UpdateOfficePasswordPage = () => <UpdateOfficePassword />;
 export const UpdateOfficePage = () => <UpdateOfficeProfile />;
 
 export const CarrerGuidanceDashboard = () => <CareerDashboard />;
+export const CareerGuidancePostDashboardPage = () => <CareerPostsDashboard />;
+export const CareerGuidanceSessionPage = () => <OneToOneCarrerSessions />;
 
 // general
 export const OfficeProfilePage = () => <OfficeProfile />;

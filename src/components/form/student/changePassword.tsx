@@ -26,6 +26,7 @@ export function ChangePassword() {
     e.preventDefault();
     handleSubmit(subForm)(e);
   }
+
   return (
     <>
       <form
