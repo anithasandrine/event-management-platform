@@ -157,3 +157,28 @@ type School = {
   fullName: string;
   Departments: Departement[];
 };
+
+type CareerPostAtributes = {
+  title: string;
+  description: string;
+  category: string;
+  author: string;
+  image: string;
+};
+
+type PostAtributes = {
+  id: string;
+  title: string;
+  description: string;
+  category: string;
+  author: string;
+  image: string;
+  createdAt: Date;
+};
+
+type SessionAttribute = {
+  id: string;
+  Student: Partial<StudentAtribute>;
+  bookingReason: string;
+  replay?: string;
+};
