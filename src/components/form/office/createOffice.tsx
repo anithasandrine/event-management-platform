@@ -29,11 +29,11 @@ export function CreateOffice({
     <>
       <form
         onSubmit={Handle_updatePassword}
-        className="mt-4 xl:mt-12 px-2 w-full md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center md:w-[80%]"
+        className="mx-auto px-2 w-full md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center md:w-[80%]"
       >
         <input
           disabled={isPending}
-          className=" w-full px-2 py-1 border-[#00628B]  border-[2px] outline-none mb-4 placeholder:text-blue  "
+          className=" w-full px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-2 placeholder:text-blue  "
           type="text"
           placeholder="User name"
           {...register("userName", {
@@ -48,7 +48,7 @@ export function CreateOffice({
 
         <input
           disabled={isPending}
-          className=" w-full px-2 py-1 border-[#00628B]  border-[2px] outline-none mb-4 placeholder:text-blue  "
+          className=" w-full px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-2 placeholder:text-blue  "
           type="text"
           placeholder="Office Name"
           {...register("officeName", {
@@ -63,7 +63,7 @@ export function CreateOffice({
 
         <input
           disabled={isPending}
-          className=" w-full px-2 py-1 border-[#00628B]  border-[2px] outline-none mb-4 placeholder:text-blue  "
+          className=" w-full px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-2 placeholder:text-blue  "
           type="email"
           placeholder="Office email"
           {...register("officeEmail", {
@@ -78,7 +78,7 @@ export function CreateOffice({
 
         <input
           disabled={isPending}
-          className=" w-full px-2 py-1 border-[#00628B]  border-[2px] outline-none mb-4 placeholder:text-blue  "
+          className=" w-full px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-2 placeholder:text-blue  "
           type="text"
           placeholder="Office phone"
           {...register("officePhone", {
@@ -94,7 +94,7 @@ export function CreateOffice({
         <label className="w-full relative">
           <input
             disabled={isPending}
-            className=" w-full px-2 py-1 border-[#00628B]  border-[2px] outline-none mb-4 placeholder:text-blue  "
+            className=" w-full px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-2 placeholder:text-blue  "
             type="password"
             placeholder="Password "
             {...register("password", {
@@ -116,7 +116,7 @@ export function CreateOffice({
         <label className="w-full relative">
           <input
             disabled={isPending}
-            className=" w-full px-2 py-1 border-[#00628B]  border-[2px] outline-none mb-4 placeholder:text-blue  "
+            className=" w-full px-2 py-1 border-[#00628B]  border-[1px] outline-none mb-2 placeholder:text-blue  "
             type={"password"}
             placeholder="Confirm  password"
             {...register("confirmPassword", {
@@ -137,7 +137,7 @@ export function CreateOffice({
         <div className=" flex flex-col md:flex-row md:gap-4 lg:gap-6 xl:gap-8">
           <button
             disabled={isPending}
-            className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4 md:mt-8 lg:mt-10   text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-2 md:mt-4 lg:mt-6   text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             Create Office
             {isPending && <ButtonLoader />}
@@ -146,7 +146,7 @@ export function CreateOffice({
           <button
             disabled={isPending}
             onClick={Handle_Addmodle}
-            className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4 md:mt-8 lg:mt-10   text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-2 md:mt-4 lg:mt-6   text-white  italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             Back
           </button>

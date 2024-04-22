@@ -67,7 +67,7 @@ export const ManageOffice = () => {
     return (
       <PageLayout>
         <ContentLayout>
-          <div className=" w-full h-full min-h-fit relative">
+          <div className=" w-full h-full min-h-fit relative py-4">
             <div className=" flex justify-start items-center gap-6">
               <button
                 onClick={Handle_Addmodel}

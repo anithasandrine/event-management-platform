@@ -31,7 +31,7 @@ export function EditStudent({
     <>
       <form
         onSubmit={HandleLogIn}
-        className="mt-16 xl:mt-12 px-2 w-full md:w-[65%] lg:w-[50%] xl:w-[40%] md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center"
+        className="mt-16 xl:mt-8 mx-auto  px-2 w-full md:w-[65%] lg:w-[50%] xl:w-[55%] md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center"
       >
         <input
           disabled={true}
@@ -74,7 +74,7 @@ export function EditStudent({
 
         <button
           disabled={isPending}
-          className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4 md:mt-8 lg:mt-10  text-xl text-white font-semibold italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4  text-xl text-white font-semibold italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           Update
           {isPending && <ButtonLoader />}
@@ -84,7 +84,7 @@ export function EditStudent({
           disabled={isPending}
           type="button"
           onClick={Handle_openModel}
-          className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4 md:mt-8 lg:mt-10  text-xl text-white font-semibold italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
+          className=" bg-blue hover:bg-blueWhite px-6 py-1 mt-4  text-xl text-white font-semibold italic disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
           Cancel
         </button>

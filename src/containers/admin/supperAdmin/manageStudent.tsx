@@ -18,7 +18,7 @@ export const ManageStudent = () => {
   return (
     <PageLayout>
       <ContentLayout>
-        <>
+        <div className=" relative">
           <h1 className=" text-lg font-semibold bg-blue text-white px-4 text-center w-fit mx-auto">
             Updata Student information
           </h1>
@@ -34,7 +34,7 @@ export const ManageStudent = () => {
               Handle_openModel={Handle_openModel}
             />
           )}
-        </>
+        </div>
       </ContentLayout>
     </PageLayout>
   );

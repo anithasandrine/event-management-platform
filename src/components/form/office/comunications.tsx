@@ -54,7 +54,7 @@ export function CommunicationMessage() {
     <>
       <form
         onSubmit={Handle_updatePassword}
-        className="mt-4 xl:mt-12 px-2 w-full md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center md:w-[80%]"
+        className="mt-4 mx-auto px-2 w-full md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center md:w-[80%]"
       >
         <div className="w-full text-blue">
           <select
