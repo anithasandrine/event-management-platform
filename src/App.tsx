@@ -5,6 +5,8 @@ import { Toaster } from "react-hot-toast";
 import {
   AdminProfilePage,
   BookCareerSessionPage,
+  CareerGuidancePostDashboardPage,
+  CareerGuidanceSessionPage,
   CareerHomPage,
   CareerPostPage,
   CarrerGuidanceDashboard,
@@ -89,8 +91,8 @@ function App() {
           >
             <Route index element={<Navigate replace to={"dashboard"} />} />
             <Route path="dashboard" element={<CarrerGuidanceDashboard />} />
-            <Route path="posts" element={<CarrerGuidanceDashboard />} />
-            <Route path="sessions" element={<CarrerGuidanceDashboard />} />
+            <Route path="posts" element={<CareerGuidancePostDashboardPage />} />
+            <Route path="sessions" element={<CareerGuidanceSessionPage />} />
           </Route>
 
           {/* office */}
@@ -125,6 +127,7 @@ function App() {
             <Route path="profile/:id" element={<OfficeProfilePage />} />
             <Route path="update" element={<UpdateOfficePage />} />
             <Route path="password" element={<UpdateOfficePasswordPage />} />
+            <Route path="communicate" element={<Communications />} />
           </Route>
           {/** */}
           <Route path="/mail" element={<CommunicatingPage />} />
