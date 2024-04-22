@@ -17,7 +17,9 @@ export const StudentSignUP = () => {
   const { isPending, error, mutate } = useMutation({
     mutationFn: (data: Student) => studentSignUP(data),
     onError: (err: ErrorAtributes) => {
-      toast.error(err.originalError);
+      toast.error(
+        err?.originalError ?? "something went wrong. try again in while."
+      );
     },
     onSuccess: (res: Responce) => {
       toast.success(res.message);
