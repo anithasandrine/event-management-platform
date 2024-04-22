@@ -15,7 +15,11 @@ export const ManageOffice = () => {
   const [oppenEdit, setOpenEdit] = useState<boolean>(false);
   const [search, setSearch] = useState<string>();
   const [TableData, setTableData] = useState<OfficeAttributes[]>();
-  const [item, setItem] = useState<{ id: string; name: string } | null>(null);
+  const [item, setItem] = useState<{
+    id: string;
+    name: string;
+    office: OfficeAttributes;
+  } | null>(null);
   const { isPending, error, offices } = Offices();
   const navigate = useNavigate();
   function Handle_modle() {
@@ -34,8 +38,8 @@ export const ManageOffice = () => {
     setIsmodelOpen(false);
   }
 
-  function Handle_id(id: string, name: string) {
-    setItem({ id, name });
+  function Handle_id(id: string, name: string, office: OfficeAttributes) {
+    setItem({ id, name, office });
   }
 
   function Handle_TableSearch(e: {
@@ -108,11 +112,8 @@ export const ManageOffice = () => {
                 item={item ?? { id: "", name: "" }}
               />
             )}
-            {oppenEdit && (
-              <EditModel
-                Handle_Editmodle={Handle_EditModel}
-                item={item ?? { id: "", name: "" }}
-              />
+            {oppenEdit && item !== null && (
+              <EditModel Handle_Editmodle={Handle_EditModel} item={item} />
             )}
 
             {oppenAdd && <AddOfficeModel Handle_Addmodle={Handle_Addmodel} />}
