@@ -89,7 +89,7 @@ export const updateOffice = async (
 export const sendCommunication = async (values: CommunicationMessage) => {
   const loggedin = getLoggedInuser();
   const Token = "accessToken" in loggedin ? loggedin.accessToken : "";
-  const data = await fetch(`${API_URL}/office/comunicate`, {
+  const data = await fetch(`${API_URL}/office/comunication`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

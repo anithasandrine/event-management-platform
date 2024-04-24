@@ -13,6 +13,7 @@ import {
   updateOffice,
   updateOfficePasswordApi,
 } from "../../../api/offices";
+import { getAllYearOfStudies } from "../../../api/year";
 
 export const CreateOffice = () => {
   const queryClient = useQueryClient();
@@ -104,6 +105,13 @@ export const FindSchools = () => {
   return { error, isPending, schools };
 };
 
+export const FindSYearOfstudies = () => {
+  const { isPending: LoadingYear, data: Years } = useQuery({
+    queryKey: ["Year"],
+    queryFn: async () => await getAllYearOfStudies(),
+  });
+  return { LoadingYear, Years };
+};
 export const StudentByRegNo = () => {
   const { isPending: pendingStudent, mutate } = useMutation({
     mutationFn: (regNO: string) => findStudentByRegNo(regNO),

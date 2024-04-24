@@ -5,50 +5,59 @@ import { ButtonLoader } from "../../buttonLoader";
 import { SendCommunication } from "../../../containers/admin/supperAdmin/Actions";
 import { Quil } from "../../reactQuil";
 import { SchoolsAndDepartment } from "../../CollegeAnd schools";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { StudentById } from "../../tableStudents";
 
 export function CommunicationMessage() {
-  const { register, handleSubmit, setValue, getValues, reset, formState } =
+  const { register, handleSubmit, setValue, reset, formState } =
     useForm<CommunicationMessage>();
   const { errors } = formState;
   const navigate = useNavigate();
-  const [selectedChannel, setSelectedChanel] = useState<"sms" | "email">(
-    "email"
-  );
+  const [selectedChannel, setSelectedChanel] = useState<string[]>(["email"]);
+  const [receiver, setReceiver] = useState<Receiver>({
+    school: [],
+    department: [],
+    class: [],
+    year: [],
+    student: [],
+  });
+  const [studentx, setStudent] = useState<string[]>([]);
 
   const [reciverSelectinMethod, setRecieverSelectionMethod] = useState<
     "student" | "department"
   >("department");
+
   const { isPending, Comunicate } = SendCommunication();
   const subForm: SubmitHandler<CommunicationMessage> = (data) => {
     console.log(data);
-    if (getValues("receiver").length === 0) {
-      toast.error("Please select message Reciever.");
-    } else {
-      getValues("channel") !== "email" && setValue("subject", " nothing ");
-      Comunicate(data, {
-        onSuccess: () => {
-          reset();
-        },
-      });
-    }
+
+    Comunicate(data, {
+      onSuccess: () => {
+        reset();
+        setValue("receiver", {
+          school: [],
+          department: [],
+          class: [],
+          year: [],
+          student: [],
+        });
+      },
+    });
   };
   function Handle_updatePassword(e: FormEvent<HTMLElement>) {
     e.preventDefault();
+    setValue("receiver", { ...receiver, student: studentx });
+    setValue("channel", selectedChannel);
     handleSubmit(subForm)(e);
   }
   function HandleChange(content: string) {
     setValue("content", content);
   }
-  function HandleSelection(
-    select: {
-      school: string;
-      dpt: string[];
-    }[]
-  ) {
-    setValue("receiver", select);
+  function HandleSelection(select: Receiver) {
+    setReceiver(select);
+  }
+  function Handle_student(student: string[]) {
+    setStudent(student);
   }
   return (
     <>
@@ -56,27 +65,37 @@ export function CommunicationMessage() {
         onSubmit={Handle_updatePassword}
         className="mt-4 mx-auto px-2 w-full md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center md:w-[80%]"
       >
-        <div className="w-full text-blue">
-          <select
-            className=" w-full px-2 py-1 border-[#00628B]  border-[2px] border-t-0 border-r-0 border-l-0 outline-none mb-4 placeholder:text-blue  "
-            {...register("channel", {})}
-            value={selectedChannel}
-            onChange={(e) => {
-              setSelectedChanel(
-                "value" in e.target &&
-                  typeof e.target.value === "string" &&
-                  e.target.value === "sms"
-                  ? "sms"
-                  : "email"
-              );
-              setValue("content", "");
-            }}
-          >
-            <option value="email">Use email</option>
-            <option value="sms">Use SMS</option>
-          </select>
+        <div className=" text-blue py-4 flex gap-8 w-fit mx-auto">
+          <div className=" flex items-center gap-2">
+            <input
+              type="radio"
+              checked={selectedChannel.includes("email")}
+              onClick={() =>
+                selectedChannel.includes("email")
+                  ? setSelectedChanel((prev) =>
+                      prev.filter((name) => name !== "email")
+                    )
+                  : setSelectedChanel((prev) => [...prev, "email"])
+              }
+            />
+            <span>Use Email</span>
+          </div>
+          <div className=" flex items-center gap-2">
+            <input
+              type="radio"
+              checked={selectedChannel.includes("sms")}
+              onClick={() =>
+                selectedChannel.includes("sms")
+                  ? setSelectedChanel((prev) =>
+                      prev.filter((name) => name !== "sms")
+                    )
+                  : setSelectedChanel((prev) => [...prev, "sms"])
+              }
+            />
+            <span>Use Email</span>
+          </div>
         </div>
-        {selectedChannel === "email" && (
+        {selectedChannel.includes("email") && (
           <input
             disabled={isPending}
             className=" w-full px-2 py-1 border-[#00628B]  border-[2px] border-t-0 border-r-0 border-l-0 outline-none mb-4 placeholder:text-blue  "
@@ -93,8 +112,10 @@ export function CommunicationMessage() {
           </FormError>
         )}
 
-        {selectedChannel === "email" && <Quil HandleChange={HandleChange} />}
-        {selectedChannel === "sms" && (
+        {!selectedChannel.includes("sms") && (
+          <Quil HandleChange={HandleChange} />
+        )}
+        {selectedChannel.includes("sms") && (
           <textarea
             disabled={isPending}
             className=" w-full px-2 py-1 border-[#00628B]  border-[1px] rounded-lg outline-none mb-4 placeholder:text-blue  "
@@ -114,7 +135,6 @@ export function CommunicationMessage() {
             <button
               onClick={() => {
                 setRecieverSelectionMethod("student");
-                setValue("receiver", []);
               }}
               disabled={isPending}
               className=" bg-blue w-full
@@ -127,7 +147,6 @@ export function CommunicationMessage() {
             <button
               onClick={() => {
                 setRecieverSelectionMethod("department");
-                setValue("receiver", []);
               }}
               disabled={isPending}
               className=" bg-blue w-full
@@ -145,7 +164,7 @@ export function CommunicationMessage() {
 
           {reciverSelectinMethod === "student" && (
             <div className=" w-full">
-              <StudentById setValue={setValue} />
+              <StudentById Handle_student={Handle_student} />
             </div>
           )}
         </div>

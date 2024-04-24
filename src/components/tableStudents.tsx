@@ -3,15 +3,14 @@ import Tippy from "@tippyjs/react";
 import { useState } from "react";
 import { GeneralSkeleton } from "./Skleton/generalSkeleton";
 import { StudentByRegNo } from "../containers/admin/supperAdmin/Actions";
-import { UseFormSetValue } from "react-hook-form";
 
 export const StudentById = ({
-  setValue,
+  Handle_student,
 }: {
-  setValue: UseFormSetValue<CommunicationMessage>;
+  Handle_student: (student: string[]) => void;
 }) => {
   const [selectedStudent, setSeletecStudent] = useState<string[]>([]);
-  setValue("receiver", selectedStudent);
+  Handle_student(selectedStudent);
 
   const columns: TableColumn<StudentAtribute>[] = [
     {

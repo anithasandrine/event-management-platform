@@ -33,13 +33,9 @@ export function EditStudent({
         onSubmit={HandleLogIn}
         className="mt-16 xl:mt-8 mx-auto  px-2 w-full md:w-[65%] lg:w-[50%] xl:w-[55%] md:shadow-xl md:px-4 md:py-4 lg:text-xl flex flex-col items-center"
       >
-        <input
-          disabled={true}
-          className=" w-full px-2 py-1 shadow-lg border-[1px] outline-none mb-4 placeholder:text-blue  "
-          type="text"
-          placeholder="Username"
-          value={student.name}
-        />
+        <div className=" w-full px-2 py-1 shadow-lg border-[1px] outline-none mb-4 placeholder:text-blue  ">
+          {student.name}
+        </div>
 
         <input
           disabled={isPending}
@@ -48,7 +44,7 @@ export function EditStudent({
           placeholder="Email"
           defaultValue={student.updatedEmail}
           {...register("updatedEmail", {
-            required: "Name is required",
+            required: "Email is required",
           })}
         />
         {errors?.updatedEmail?.message && (
@@ -63,7 +59,7 @@ export function EditStudent({
           placeholder="Phone"
           defaultValue={student.updatedPhone}
           {...register("updatedPhone", {
-            required: "Name is required",
+            required: "Phone is required",
           })}
         />
         {errors?.updatedPhone?.message && (

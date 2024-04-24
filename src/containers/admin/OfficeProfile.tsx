@@ -20,9 +20,6 @@ export const OfficeProfile = () => {
     toast.error(er);
     navigate("/error");
   }
-  if (office) {
-    console.log("//////we got it", office);
-  }
   return (
     <PageLayout>
       <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md mt-24">

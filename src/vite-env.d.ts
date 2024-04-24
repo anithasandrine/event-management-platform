@@ -137,12 +137,15 @@ type EditOfficeAttributes = {
   officePhone: string;
 };
 type Receiver = {
-  school: string;
-  dpt: string[];
+  school: string[];
+  department: string[];
+  class: { department: string; year: string }[];
+  year: string[];
+  student: string[];
 };
 type CommunicationMessage = {
-  receiver: Receiver[] | string[];
-  channel: "sms" | "email";
+  receiver: Receiver;
+  channel: string[];
   subject: string;
   content: string;
 };
