@@ -53,7 +53,11 @@ export const UserActions = ({ Handle_click }: { Handle_click: () => void }) => {
           {UserProfilePic === "" ? (
             <FontAwesomeIcon icon={faUser} className="text-xl lg:text-3xl" />
           ) : (
-            <img src={UserProfilePic} alt="profile" />
+            <img
+              className="w-10 h-10 rounded-full"
+              src={UserProfilePic}
+              alt="profile"
+            />
           )}
         </button>
       </div>

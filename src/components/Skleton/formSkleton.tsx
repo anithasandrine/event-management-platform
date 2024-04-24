@@ -1,3 +1,11 @@
+import { PageLayout } from "../pageLayout";
+
 export const FormSkleton = () => {
-  return <div>form Skeleton</div>;
+  return (
+    <PageLayout>
+      <>
+        <div>form Skeleton</div>;
+      </>
+    </PageLayout>
+  );
 };
